@@ -1,86 +1,142 @@
 
-<!DOCTYPE html>
-<html lang='en-US'>
-<head>
-  <meta charset='utf-8'>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zig Language Server And Cancellation</title>
-  <meta name="description" content="I already have a dedicated post about a hypothetical Zig language server.
-But perhaps the most important thing I've written so far on the topic is the short note at the end of Zig and Rust.">
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://matklad.github.io/2023/05/06/zig-language-server-and-cancellation.html">
-  <link rel="alternate" type="application/rss+xml" title="matklad" href="https://matklad.github.io/feed.xml">
-  <style>
-  @font-face {
-    font-family: 'Open Sans'; src: url('/css/OpenSans-300-Normal.woff2') format('woff2');
-    font-weight: 300; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Italic.woff2') format('woff2');
-    font-weight: 400; font-style: italic;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Italic.woff2') format('woff2');
-    font-weight: 700; font-style: italic;
-  }
+    <!DOCTYPE html>
+    <html lang="en-US">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Zig Language Server And Cancellation</title>
+        <meta name="description" content="I already have a dedicated post about a hypothetical Zig language server.
+But perhaps the most important thing I've written so far on the topic is the short note at the end of Zig and Rust." />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://matklad.github.io/2023/05/06/zig-language-server-and-cancellation.html" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="matklad"
+          href="https://matklad.github.io/feed.xml"
+        />
+        <style>
+          @font-face {
+            font-family: "Open Sans";
+            src: url("/css/OpenSans-300-Normal.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Italic.woff2") format("woff2");
+            font-weight: 400;
+            font-style: italic;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Italic.woff2") format("woff2");
+            font-weight: 700;
+            font-style: italic;
+          }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; margin-block-start: 0; margin-block-end: 0; }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
 
-  body {
-    max-width: 80ch;
-    padding: 2ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
+          body {
+            max-width: 80ch;
+            padding: 2ch;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-  header { margin-bottom: 2rem; }
-  header > nav { display: flex; column-gap: 2ch; align-items: baseline; flex-wrap: wrap; }
-  header a { font-style: normal; color: rgba(0, 0, 0, .8); text-decoration: none; }
-  header a:hover { color: rgba(0, 0, 0, .8); text-decoration: underline; }
-  header .title { font-size: 1.25em; flex-grow: 2; }
+          header {
+            margin-bottom: 2rem;
+          }
+          header > nav {
+            display: flex;
+            column-gap: 2ch;
+            align-items: baseline;
+            flex-wrap: wrap;
+          }
+          header a {
+            font-style: normal;
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+          }
+          header a:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: underline;
+          }
+          header .title {
+            font-size: 1.25em;
+            flex-grow: 2;
+          }
 
-  footer { margin-top: 2rem; }
-  footer > p { display: flex; column-gap: 2ch; justify-content: center; flex-wrap: wrap; }
-  footer a { color: rgba(0, 0, 0, .8); text-decoration: none; white-space: nowrap; }
-  footer i { vertical-align: middle; color: rgba(0, 0, 0, .8) }
+          footer {
+            margin-top: 2rem;
+          }
+          footer > p {
+            display: flex;
+            column-gap: 2ch;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          footer a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            white-space: nowrap;
+          }
+          footer i {
+            vertical-align: middle;
+            color: rgba(0, 0, 0, 0.8);
+          }
+        </style>
 
-  </style>
+        <link rel="stylesheet" href="/css/main.css" />
+        
+      </head>
 
-  <link rel="stylesheet" href="/css/main.css">
-  
-</head>
+      <body>
+        <header>
+          <nav>
+            <a class="title" href="/">matklad</a>
+            <a href="/about.html">About</a>
+            <a href="/links.html">Links</a>
+            <a href="/blogroll.html">Blogroll</a>
+          </nav>
+        </header>
 
-<body>
-  <header>
-    <nav>
-      <a class="title" href="/">matklad</a>
-      <a href="/about.html">About</a>
-      <a href="/links.html">Links</a>
-      <a href="/blogroll.html">Blogroll</a>
-    </nav>
-  </header>
-
-  <main>
-  <article >
-
-<h1><span>Zig Language Server And Cancellation</span> <time class="meta" datetime="2023-05-06">May 6, 2023</time></h1>
+        <main><article >
+      
+<h1><span>Zig Language Server And Cancellation</span> <time class="meta" datetime="2023-05-06"
+    >May 6, 2023</time
+  ></h1>
 <p><span>I already have a dedicated post about a hypothetical </span><a href="https://matklad.github.io/2023/02/10/how-a-zig-ide-could-work.html"><span>Zig language server</span></a><span>.</span>
 <span>But perhaps the most important thing I</span>&rsquo;<span>ve written so far on the topic is the short note at the end of </span><a href="https://matklad.github.io/2023/03/26/zig-and-rust.html#ide"><em><span>Zig and Rust</span></em></a><span>.</span></p>
 <p><span>If you want to implement an LSP for a language, you need to start with a data model.</span>
@@ -264,29 +320,32 @@ But perhaps the most important thing I've written so far on the topic is the sho
 </figure>
 <p><span>Discussion on </span><a href="https://old.reddit.com/r/Zig/comments/13a8d9l/blog_post_zig_language_server_and_cancellation/"><span>/r/Zig</span></a><span>.</span></p>
 </section>
-</article>
-  </main>
 
-  <footer>
-    <p>
-      <a href="https://github.com/matklad/matklad.github.io/edit/master/content/posts/2023-05-06-zig-language-server-and-cancellation.dj">
-        <svg class="icon"><use href="/assets/icons.svg#edit"/></svg>
-        Fix typo
-      </a>
-      <a href="/feed.xml">
-        <svg class="icon"><use href="/assets/icons.svg#rss"/></svg>
-        Subscribe
-      </a>
-      <a href="mailto:aleksey.kladov+blog@gmail.com">
-        <svg class="icon"><use href="/assets/icons.svg#email"/></svg>
-        Get in touch
-      </a>
-      <a href="https://github.com/matklad">
-        <svg class="icon"><use href="/assets/icons.svg#github"/></svg>
-        matklad
-      </a>
-    </p>
-  </footer>
-</body>
+    </article></main>
 
-</html>
+        <footer>
+          <p>
+            <a
+              href="https://github.com/matklad/abhibyte.github.io/edit/master/content/posts/2023-05-06-zig-language-server-and-cancellation.dj"
+            >
+              <svg class="icon"><use href="/assets/icons.svg#edit" /></svg>
+              Fix typo
+            </a>
+            //
+            <a href="/feed.xml">
+              // <svg class="icon"><use href="/assets/icons.svg#rss" /></svg> //
+              Subscribe //
+            </a>
+            <a href="mailto:abhinavramesh03@gmail.com">
+              <svg class="icon"><use href="/assets/icons.svg#email" /></svg>
+              Get in touch
+            </a>
+            <a href="https://github.com/abhibyte">
+              <svg class="icon"><use href="/assets/icons.svg#github" /></svg>
+              matklad
+            </a>
+          </p>
+        </footer>
+      </body>
+    </html>
+  

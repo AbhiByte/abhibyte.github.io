@@ -1,87 +1,143 @@
 
-<!DOCTYPE html>
-<html lang='en-US'>
-<head>
-  <meta charset='utf-8'>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Language Sucks, It Doesn't Matter</title>
-  <meta name="description" content="This post describes my own pet theory of programming languages popularity.
+    <!DOCTYPE html>
+    <html lang="en-US">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Your Language Sucks, It Doesn't Matter</title>
+        <meta name="description" content="This post describes my own pet theory of programming languages popularity.
 My understanding is that no one knows why some languages are popular and others aren't, so there's no harm done if I add my own thoughts to the overall confusion.
-Obviously, this is all wild speculation and a just-so story without any kind of data backed research.">
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://matklad.github.io/2020/09/13/your-language-sucks.html">
-  <link rel="alternate" type="application/rss+xml" title="matklad" href="https://matklad.github.io/feed.xml">
-  <style>
-  @font-face {
-    font-family: 'Open Sans'; src: url('/css/OpenSans-300-Normal.woff2') format('woff2');
-    font-weight: 300; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Italic.woff2') format('woff2');
-    font-weight: 400; font-style: italic;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Italic.woff2') format('woff2');
-    font-weight: 700; font-style: italic;
-  }
+Obviously, this is all wild speculation and a just-so story without any kind of data backed research." />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://matklad.github.io/2020/09/13/your-language-sucks.html" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="matklad"
+          href="https://matklad.github.io/feed.xml"
+        />
+        <style>
+          @font-face {
+            font-family: "Open Sans";
+            src: url("/css/OpenSans-300-Normal.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Italic.woff2") format("woff2");
+            font-weight: 400;
+            font-style: italic;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Italic.woff2") format("woff2");
+            font-weight: 700;
+            font-style: italic;
+          }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; margin-block-start: 0; margin-block-end: 0; }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
 
-  body {
-    max-width: 80ch;
-    padding: 2ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
+          body {
+            max-width: 80ch;
+            padding: 2ch;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-  header { margin-bottom: 2rem; }
-  header > nav { display: flex; column-gap: 2ch; align-items: baseline; flex-wrap: wrap; }
-  header a { font-style: normal; color: rgba(0, 0, 0, .8); text-decoration: none; }
-  header a:hover { color: rgba(0, 0, 0, .8); text-decoration: underline; }
-  header .title { font-size: 1.25em; flex-grow: 2; }
+          header {
+            margin-bottom: 2rem;
+          }
+          header > nav {
+            display: flex;
+            column-gap: 2ch;
+            align-items: baseline;
+            flex-wrap: wrap;
+          }
+          header a {
+            font-style: normal;
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+          }
+          header a:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: underline;
+          }
+          header .title {
+            font-size: 1.25em;
+            flex-grow: 2;
+          }
 
-  footer { margin-top: 2rem; }
-  footer > p { display: flex; column-gap: 2ch; justify-content: center; flex-wrap: wrap; }
-  footer a { color: rgba(0, 0, 0, .8); text-decoration: none; white-space: nowrap; }
-  footer i { vertical-align: middle; color: rgba(0, 0, 0, .8) }
+          footer {
+            margin-top: 2rem;
+          }
+          footer > p {
+            display: flex;
+            column-gap: 2ch;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          footer a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            white-space: nowrap;
+          }
+          footer i {
+            vertical-align: middle;
+            color: rgba(0, 0, 0, 0.8);
+          }
+        </style>
 
-  </style>
+        <link rel="stylesheet" href="/css/main.css" />
+        
+      </head>
 
-  <link rel="stylesheet" href="/css/main.css">
-  
-</head>
+      <body>
+        <header>
+          <nav>
+            <a class="title" href="/">matklad</a>
+            <a href="/about.html">About</a>
+            <a href="/links.html">Links</a>
+            <a href="/blogroll.html">Blogroll</a>
+          </nav>
+        </header>
 
-<body>
-  <header>
-    <nav>
-      <a class="title" href="/">matklad</a>
-      <a href="/about.html">About</a>
-      <a href="/links.html">Links</a>
-      <a href="/blogroll.html">Blogroll</a>
-    </nav>
-  </header>
-
-  <main>
-  <article >
-
-<h1><span>Your Language Sucks, It Doesn</span>&rsquo;<span>t Matter</span> <time class="meta" datetime="2020-09-13">Sep 13, 2020</time></h1>
+        <main><article >
+      
+<h1><span>Your Language Sucks, It Doesn</span>&rsquo;<span>t Matter</span> <time class="meta" datetime="2020-09-13"
+    >Sep 13, 2020</time
+  ></h1>
 <p><span>This post describes my own pet theory of programming languages popularity.</span>
 <span>My understanding is that no one knows why some languages are popular and others aren</span>&rsquo;<span>t, so there</span>&rsquo;<span>s no harm done if I add my own thoughts to the overall confusion.</span>
 <span>Obviously, this is all wild speculation and a just-so story without any kind of data backed research.</span></p>
@@ -160,29 +216,32 @@ Obviously, this is all wild speculation and a just-so story without any kind of 
 <span>Nothing here is a breakthrough, but the combination is impressive.</span></p>
 <p><em><span>Fourth</span></em><span>, I predict that Nim, Crystal and Zig (which is very interesting, language design wise) would not become popular.</span></p>
 <p><em><span>Fifth</span></em><span>, I predict that Swift will be pretty popular on Apple hardware due to platform exclusivity, but won</span>&rsquo;<span>t grow much outside of it, </span><em><span>despite</span></em><span> being very innovative in language design (generics in Swift are the opposite of the generics in Go).</span></p>
-</article>
-  </main>
 
-  <footer>
-    <p>
-      <a href="https://github.com/matklad/matklad.github.io/edit/master/content/posts/2020-09-13-your-language-sucks.dj">
-        <svg class="icon"><use href="/assets/icons.svg#edit"/></svg>
-        Fix typo
-      </a>
-      <a href="/feed.xml">
-        <svg class="icon"><use href="/assets/icons.svg#rss"/></svg>
-        Subscribe
-      </a>
-      <a href="mailto:aleksey.kladov+blog@gmail.com">
-        <svg class="icon"><use href="/assets/icons.svg#email"/></svg>
-        Get in touch
-      </a>
-      <a href="https://github.com/matklad">
-        <svg class="icon"><use href="/assets/icons.svg#github"/></svg>
-        matklad
-      </a>
-    </p>
-  </footer>
-</body>
+    </article></main>
 
-</html>
+        <footer>
+          <p>
+            <a
+              href="https://github.com/matklad/abhibyte.github.io/edit/master/content/posts/2020-09-13-your-language-sucks.dj"
+            >
+              <svg class="icon"><use href="/assets/icons.svg#edit" /></svg>
+              Fix typo
+            </a>
+            //
+            <a href="/feed.xml">
+              // <svg class="icon"><use href="/assets/icons.svg#rss" /></svg> //
+              Subscribe //
+            </a>
+            <a href="mailto:abhinavramesh03@gmail.com">
+              <svg class="icon"><use href="/assets/icons.svg#email" /></svg>
+              Get in touch
+            </a>
+            <a href="https://github.com/abhibyte">
+              <svg class="icon"><use href="/assets/icons.svg#github" /></svg>
+              matklad
+            </a>
+          </p>
+        </footer>
+      </body>
+    </html>
+  

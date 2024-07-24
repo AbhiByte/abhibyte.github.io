@@ -1,85 +1,141 @@
 
-<!DOCTYPE html>
-<html lang='en-US'>
-<head>
-  <meta charset='utf-8'>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unsafe as a Human-Assisted Type System</title>
-  <meta name="description" content="This is a short note about yet another way to look at Rust's unsafe.">
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://matklad.github.io/2019/07/25/unsafe-as-a-type-system.html">
-  <link rel="alternate" type="application/rss+xml" title="matklad" href="https://matklad.github.io/feed.xml">
-  <style>
-  @font-face {
-    font-family: 'Open Sans'; src: url('/css/OpenSans-300-Normal.woff2') format('woff2');
-    font-weight: 300; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Italic.woff2') format('woff2');
-    font-weight: 400; font-style: italic;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Italic.woff2') format('woff2');
-    font-weight: 700; font-style: italic;
-  }
+    <!DOCTYPE html>
+    <html lang="en-US">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Unsafe as a Human-Assisted Type System</title>
+        <meta name="description" content="This is a short note about yet another way to look at Rust's unsafe." />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://matklad.github.io/2019/07/25/unsafe-as-a-type-system.html" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="matklad"
+          href="https://matklad.github.io/feed.xml"
+        />
+        <style>
+          @font-face {
+            font-family: "Open Sans";
+            src: url("/css/OpenSans-300-Normal.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Italic.woff2") format("woff2");
+            font-weight: 400;
+            font-style: italic;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Italic.woff2") format("woff2");
+            font-weight: 700;
+            font-style: italic;
+          }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; margin-block-start: 0; margin-block-end: 0; }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
 
-  body {
-    max-width: 80ch;
-    padding: 2ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
+          body {
+            max-width: 80ch;
+            padding: 2ch;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-  header { margin-bottom: 2rem; }
-  header > nav { display: flex; column-gap: 2ch; align-items: baseline; flex-wrap: wrap; }
-  header a { font-style: normal; color: rgba(0, 0, 0, .8); text-decoration: none; }
-  header a:hover { color: rgba(0, 0, 0, .8); text-decoration: underline; }
-  header .title { font-size: 1.25em; flex-grow: 2; }
+          header {
+            margin-bottom: 2rem;
+          }
+          header > nav {
+            display: flex;
+            column-gap: 2ch;
+            align-items: baseline;
+            flex-wrap: wrap;
+          }
+          header a {
+            font-style: normal;
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+          }
+          header a:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: underline;
+          }
+          header .title {
+            font-size: 1.25em;
+            flex-grow: 2;
+          }
 
-  footer { margin-top: 2rem; }
-  footer > p { display: flex; column-gap: 2ch; justify-content: center; flex-wrap: wrap; }
-  footer a { color: rgba(0, 0, 0, .8); text-decoration: none; white-space: nowrap; }
-  footer i { vertical-align: middle; color: rgba(0, 0, 0, .8) }
+          footer {
+            margin-top: 2rem;
+          }
+          footer > p {
+            display: flex;
+            column-gap: 2ch;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          footer a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            white-space: nowrap;
+          }
+          footer i {
+            vertical-align: middle;
+            color: rgba(0, 0, 0, 0.8);
+          }
+        </style>
 
-  </style>
+        <link rel="stylesheet" href="/css/main.css" />
+        
+      </head>
 
-  <link rel="stylesheet" href="/css/main.css">
-  
-</head>
+      <body>
+        <header>
+          <nav>
+            <a class="title" href="/">matklad</a>
+            <a href="/about.html">About</a>
+            <a href="/links.html">Links</a>
+            <a href="/blogroll.html">Blogroll</a>
+          </nav>
+        </header>
 
-<body>
-  <header>
-    <nav>
-      <a class="title" href="/">matklad</a>
-      <a href="/about.html">About</a>
-      <a href="/links.html">Links</a>
-      <a href="/blogroll.html">Blogroll</a>
-    </nav>
-  </header>
-
-  <main>
-  <article >
-
-<h1><span>Unsafe as a Human-Assisted Type System</span> <time class="meta" datetime="2019-07-25">Jul 25, 2019</time></h1>
+        <main><article >
+      
+<h1><span>Unsafe as a Human-Assisted Type System</span> <time class="meta" datetime="2019-07-25"
+    >Jul 25, 2019</time
+  ></h1>
 <p><span>This is a short note about yet another way to look at Rust</span>&rsquo;<span>s </span><code>unsafe</code><span>.</span></p>
 <p><span>Today, an interesting </span><a href="https://github.com/rust-lang/rust/issues/62894"><span>bug</span></a><span> was found in rustc, which made me aware just how useful </span><code>unsafe</code><span> is for making code maintainable.</span>
 <span>The story begins a couple of months ago, when I was casually browsing through recent pull requests for </span><a href="http://github.com/rust-lang/rust/"><span>rust-lang/rust</span></a><span>.</span>
@@ -172,29 +228,32 @@
 <p><span>Discussion on </span><a href="https://www.reddit.com/r/rust/comments/chvl50/blog_post_unsafe_as_a_humanassisted_type_system/"><span>r/rust</span></a><span>.</span></p>
 <p><strong><strong><span>Update(2020-08-17):</span></strong></strong><span> oops, </span><a href="https://lobste.rs/s/9e7o8e/comparative_unsafety#c_btqrdt"><span>I did it again</span></a><span>.</span></p>
 <p><span>[1] </span><code>unsafe</code><span> is really an effect system, but the difference is not important here.</span></p>
-</article>
-  </main>
 
-  <footer>
-    <p>
-      <a href="https://github.com/matklad/matklad.github.io/edit/master/content/posts/2019-07-25-unsafe-as-a-type-system.dj">
-        <svg class="icon"><use href="/assets/icons.svg#edit"/></svg>
-        Fix typo
-      </a>
-      <a href="/feed.xml">
-        <svg class="icon"><use href="/assets/icons.svg#rss"/></svg>
-        Subscribe
-      </a>
-      <a href="mailto:aleksey.kladov+blog@gmail.com">
-        <svg class="icon"><use href="/assets/icons.svg#email"/></svg>
-        Get in touch
-      </a>
-      <a href="https://github.com/matklad">
-        <svg class="icon"><use href="/assets/icons.svg#github"/></svg>
-        matklad
-      </a>
-    </p>
-  </footer>
-</body>
+    </article></main>
 
-</html>
+        <footer>
+          <p>
+            <a
+              href="https://github.com/matklad/abhibyte.github.io/edit/master/content/posts/2019-07-25-unsafe-as-a-type-system.dj"
+            >
+              <svg class="icon"><use href="/assets/icons.svg#edit" /></svg>
+              Fix typo
+            </a>
+            //
+            <a href="/feed.xml">
+              // <svg class="icon"><use href="/assets/icons.svg#rss" /></svg> //
+              Subscribe //
+            </a>
+            <a href="mailto:abhinavramesh03@gmail.com">
+              <svg class="icon"><use href="/assets/icons.svg#email" /></svg>
+              Get in touch
+            </a>
+            <a href="https://github.com/abhibyte">
+              <svg class="icon"><use href="/assets/icons.svg#github" /></svg>
+              matklad
+            </a>
+          </p>
+        </footer>
+      </body>
+    </html>
+  

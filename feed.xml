@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-<link href="https://matklad.github.io/feed.xml" rel="self" type="application/atom+xml"/>
-<link href="https://matklad.github.io" rel="alternate" type="text/html"/>
-<updated>2024-07-24T17:38:57.136Z</updated>
-<id>https://matklad.github.io/feed.xml</id>
-<title type="html">matklad</title>
-<subtitle>Yet another programming blog by Alex Kladov aka matklad.</subtitle>
-<author><name>Alex Kladov</name></author>
-
-<entry>
-<title type="text">Properly Testing Concurrent Data Structures</title>
-<link href="https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures.html" rel="alternate" type="text/html" title="Properly Testing Concurrent Data Structures" />
-<published>2024-07-05T00:00:00+00:00</published>
-<updated>2024-07-05T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[There's a fascinating Rust library, loom, which can be used to
+    <feed xmlns="http://www.w3.org/2005/Atom">
+      <link
+        href="https://matklad.github.io/feed.xml"
+        rel="self"
+        type="application/atom+xml"
+      />
+      <link href="https://matklad.github.io" rel="alternate" type="text/html" />
+      <updated>2024-07-24T17:52:34.760Z</updated>
+      <id>https://matklad.github.io/feed.xml</id>
+      <title type="html">matklad</title>
+      <subtitle
+        >Yet another programming blog by Alex Kladov aka matklad.</subtitle
+      >
+      <author><name>Alex Kladov</name></author>
+      
+    <entry>
+      <title type="text">Properly Testing Concurrent Data Structures</title>
+      <link
+        href="https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures.html"
+        rel="alternate"
+        type="text/html"
+        title="Properly Testing Concurrent Data Structures"
+      />
+      <published>2024-07-05T00:00:00+00:00</published>
+      <updated>2024-07-05T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[There's a fascinating Rust library, loom, which can be used to
 thoroughly test lock-free data structures. I always wanted to learn how it works. I still do! But
 recently I accidentally implemented a small toy which, I think, contains some of the loom's ideas,
 and it seems worthwhile to write about that. The goal here isn't to teach you what you should be
 using in practice (if you need that, go read loom's docs), but rather to derive a couple of neat
 ideas from first principles.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures.html"><![CDATA[
-<h1><span>Properly Testing Concurrent Data Structures</span> <time class="meta" datetime="2024-07-05">Jul 5, 2024</time></h1>
+      <content type="html" xml:base="https://matklad.github.io/2024/07/05/properly-testing-concurrent-data-structures.html"
+        ><![CDATA[
+<h1><span>Properly Testing Concurrent Data Structures</span> <time class="meta" datetime="2024-07-05"
+    >Jul 5, 2024</time
+  ></h1>
 <p><span>There</span>&rsquo;<span>s a fascinating Rust library, </span><a href="https://github.com/tokio-rs/loom"><span>loom</span></a><span>, which can be used to</span>
 <span>thoroughly test lock-free data structures. I always wanted to learn how it works. I still do! But</span>
 <span>recently I accidentally implemented a small toy which, I think, contains some of the loom</span>&rsquo;<span>s ideas,</span>
@@ -1381,20 +1395,29 @@ ideas from first principles.]]></summary>
 <p><span>You can find source code for this article at</span>
 <a href="https://github.com/matklad/properly-concurrent" class="display url">https://github.com/matklad/properly-concurrent</a></p>
 </section>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Regular, Recursive, Restricted</title>
-<link href="https://matklad.github.io/2024/06/04/regular-recursive-restricted.html" rel="alternate" type="text/html" title="Regular, Recursive, Restricted" />
-<published>2024-06-04T00:00:00+00:00</published>
-<updated>2024-06-04T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/06/04/regular-recursive-restricted</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[A post/question about formal grammars, wherein I search for a good formalism for describing infix
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Regular, Recursive, Restricted</title>
+      <link
+        href="https://matklad.github.io/2024/06/04/regular-recursive-restricted.html"
+        rel="alternate"
+        type="text/html"
+        title="Regular, Recursive, Restricted"
+      />
+      <published>2024-06-04T00:00:00+00:00</published>
+      <updated>2024-06-04T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/06/04/regular-recursive-restricted</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[A post/question about formal grammars, wherein I search for a good formalism for describing infix
 expressions.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/06/04/regular-recursive-restricted.html"><![CDATA[
-<h1><span>Regular, Recursive, Restricted</span> <time class="meta" datetime="2024-06-04">Jun 4, 2024</time></h1>
+      <content type="html" xml:base="https://matklad.github.io/2024/06/04/regular-recursive-restricted.html"
+        ><![CDATA[
+<h1><span>Regular, Recursive, Restricted</span> <time class="meta" datetime="2024-06-04"
+    >Jun 4, 2024</time
+  ></h1>
 <p><span>A post/question about formal grammars, wherein I search for a good formalism for describing infix</span>
 <span>expressions.</span></p>
 <p><span>Problem statement: it</span>&rsquo;<span>s hard to describe arithmetic expressions in a way that:</span></p>
@@ -1624,20 +1647,29 @@ expressions.]]></summary>
 <p><span>In the general case, the answer is no </span>&mdash;<span> this is at least as expressive as CFG, and ambiguity of</span>
 <span>arbitrary CFG is undecidable. But perhaps there</span>&rsquo;<span>s some reasonable set of restrictions under which it</span>
 <span>is in fact possible to prove the absence of ambiguity?</span></p>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Basic Things</title>
-<link href="https://matklad.github.io/2024/03/22/basic-things.html" rel="alternate" type="text/html" title="Basic Things" />
-<published>2024-03-22T00:00:00+00:00</published>
-<updated>2024-03-22T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/03/22/basic-things</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[After working on the initial stages of several largish projects, I accumulated a list of things that
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Basic Things</title>
+      <link
+        href="https://matklad.github.io/2024/03/22/basic-things.html"
+        rel="alternate"
+        type="text/html"
+        title="Basic Things"
+      />
+      <published>2024-03-22T00:00:00+00:00</published>
+      <updated>2024-03-22T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/03/22/basic-things</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[After working on the initial stages of several largish projects, I accumulated a list of things that
 share the following three properties:]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/03/22/basic-things.html"><![CDATA[
-<h1><span>Basic Things</span> <time class="meta" datetime="2024-03-22">Mar 22, 2024</time></h1>
+      <content type="html" xml:base="https://matklad.github.io/2024/03/22/basic-things.html"
+        ><![CDATA[
+<h1><span>Basic Things</span> <time class="meta" datetime="2024-03-22"
+    >Mar 22, 2024</time
+  ></h1>
 <p><span>After working on the initial stages of several largish projects, I accumulated a list of things that</span>
 <span>share the following three properties:</span></p>
 <ul>
@@ -2164,19 +2196,28 @@ share the following three properties:]]></summary>
 </li>
 </ul>
 </section>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Zig defer Patterns</title>
-<link href="https://matklad.github.io/2024/03/21/defer-patterns.html" rel="alternate" type="text/html" title="Zig defer Patterns" />
-<published>2024-03-21T00:00:00+00:00</published>
-<updated>2024-03-21T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/03/21/defer-patterns</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[A short note about some unexpected usages of Zig's defer statement.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/03/21/defer-patterns.html"><![CDATA[
-<h1><span>Zig defer Patterns</span> <time class="meta" datetime="2024-03-21">Mar 21, 2024</time></h1>
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Zig defer Patterns</title>
+      <link
+        href="https://matklad.github.io/2024/03/21/defer-patterns.html"
+        rel="alternate"
+        type="text/html"
+        title="Zig defer Patterns"
+      />
+      <published>2024-03-21T00:00:00+00:00</published>
+      <updated>2024-03-21T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/03/21/defer-patterns</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[A short note about some unexpected usages of Zig's defer statement.]]></summary>
+      <content type="html" xml:base="https://matklad.github.io/2024/03/21/defer-patterns.html"
+        ><![CDATA[
+<h1><span>Zig defer Patterns</span> <time class="meta" datetime="2024-03-21"
+    >Mar 21, 2024</time
+  ></h1>
 <p><span>A short note about some unexpected usages of Zig</span>&rsquo;<span>s </span><code>defer</code><span> statement.</span></p>
 <p><span>This post assumes that you already know the basics about RAII, </span><code>defer</code><span> and </span><code>errdefer</code><span>. While</span>
 <span>discussing the differences between them is not the point, I will allow myself one high level</span>
@@ -2315,19 +2356,28 @@ share the following three properties:]]></summary>
 
 </figure>
 </section>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Kafka versus Nabokov</title>
-<link href="https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov.html" rel="alternate" type="text/html" title="Kafka versus Nabokov" />
-<published>2024-03-02T00:00:00+00:00</published>
-<updated>2024-03-02T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[Uplifting a lobste.rs comment to a stand-alone post.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov.html"><![CDATA[
-<h1><span>Kafka versus Nabokov</span> <time class="meta" datetime="2024-03-02">Mar 2, 2024</time></h1>
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Kafka versus Nabokov</title>
+      <link
+        href="https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov.html"
+        rel="alternate"
+        type="text/html"
+        title="Kafka versus Nabokov"
+      />
+      <published>2024-03-02T00:00:00+00:00</published>
+      <updated>2024-03-02T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[Uplifting a lobste.rs comment to a stand-alone post.]]></summary>
+      <content type="html" xml:base="https://matklad.github.io/2024/03/02/Kafka-vs-Nabokov.html"
+        ><![CDATA[
+<h1><span>Kafka versus Nabokov</span> <time class="meta" datetime="2024-03-02"
+    >Mar 2, 2024</time
+  ></h1>
 <p><span>Uplifting a lobste.rs comment to a stand-alone post.</span></p>
 <p><code>objectif_lune</code><span> </span><a href="https://lobste.rs/s/9xtcun/complex_systems_bridging_between_spec"><span>asks</span></a><span>:</span></p>
 
@@ -2413,23 +2463,32 @@ baz</code><span>. This mostly solves any code duplication issues — if there’
 <span>designing those things as well, but it’s more important to make sure that you can easily change</span>
 <span>them. Solid upgrade strategy for deployment trumps any design which seems perfect at a given moment</span>
 <span>in time.</span></p>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Window: Live, Constant Time Grep</title>
-<link href="https://matklad.github.io/2024/02/10/window-live-constant-time-grep.html" rel="alternate" type="text/html" title="Window: Live, Constant Time Grep" />
-<published>2024-02-10T00:00:00+00:00</published>
-<updated>2024-02-10T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/02/10/window-live-constant-time-grep</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[In this post, I describe the design of window --- a small
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Window: Live, Constant Time Grep</title>
+      <link
+        href="https://matklad.github.io/2024/02/10/window-live-constant-time-grep.html"
+        rel="alternate"
+        type="text/html"
+        title="Window: Live, Constant Time Grep"
+      />
+      <published>2024-02-10T00:00:00+00:00</published>
+      <updated>2024-02-10T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/02/10/window-live-constant-time-grep</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[In this post, I describe the design of window --- a small
 grep-like utility I implemented in 500 lines of Rust. The utility itself is likely not that
 interesting --- I bet some greybeared can implement an equivalent in 5 lines of bash. But the
 design principles behind it might be interesting --- this small utility manages to combine core
 ideas of rust-analyzer and TigerBeetle!]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/02/10/window-live-constant-time-grep.html"><![CDATA[
-<h1><span>Window: Live, Constant Time Grep</span> <time class="meta" datetime="2024-02-10">Feb 10, 2024</time></h1>
+      <content type="html" xml:base="https://matklad.github.io/2024/02/10/window-live-constant-time-grep.html"
+        ><![CDATA[
+<h1><span>Window: Live, Constant Time Grep</span> <time class="meta" datetime="2024-02-10"
+    >Feb 10, 2024</time
+  ></h1>
 <p><span>In this post, I describe the design of </span><a href="https://github.com/matklad/window/"><span>window</span></a><span> </span>&mdash;<span> a small</span>
 <span>grep-like utility I implemented in 500 lines of Rust. The utility itself is likely not that</span>
 <span>interesting </span>&mdash;<span> I bet some greybeared can implement an equivalent in 5 lines of bash. But the</span>
@@ -2645,19 +2704,28 @@ ideas of rust-analyzer and TigerBeetle!]]></summary>
 </li>
 </ul>
 </section>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Write Less</title>
-<link href="https://matklad.github.io/2024/01/12/write-less.html" rel="alternate" type="text/html" title="Write Less" />
-<published>2024-01-12T00:00:00+00:00</published>
-<updated>2024-01-12T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/01/12/write-less</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[If we wish to count lines of code, we should not regard them as lines produced but as lines spent]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/01/12/write-less.html"><![CDATA[
-<h1><span>Write Less</span> <time class="meta" datetime="2024-01-12">Jan 12, 2024</time></h1>
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Write Less</title>
+      <link
+        href="https://matklad.github.io/2024/01/12/write-less.html"
+        rel="alternate"
+        type="text/html"
+        title="Write Less"
+      />
+      <published>2024-01-12T00:00:00+00:00</published>
+      <updated>2024-01-12T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/01/12/write-less</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[If we wish to count lines of code, we should not regard them as lines produced but as lines spent]]></summary>
+      <content type="html" xml:base="https://matklad.github.io/2024/01/12/write-less.html"
+        ><![CDATA[
+<h1><span>Write Less</span> <time class="meta" datetime="2024-01-12"
+    >Jan 12, 2024</time
+  ></h1>
 
 <figure class="blockquote">
 <blockquote><p><span>If we wish to count lines of code, we should not regard them as </span>&ldquo;<span>lines produced</span>&rdquo;<span> but as </span>&ldquo;<span>lines spent</span>&rdquo;</p>
@@ -2669,19 +2737,28 @@ ideas of rust-analyzer and TigerBeetle!]]></summary>
 <span>understand, up to a reasonable limit.</span></p>
 <p><span>To communicate effectively, write a bullet-point list of ideas that you need to get across. Then,</span>
 <span>write a short paragraph in simple language that communicates these ideas precisely.</span></p>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Of Rats and Ratchets</title>
-<link href="https://matklad.github.io/2024/01/03/of-rats-and-ratchets.html" rel="alternate" type="text/html" title="Of Rats and Ratchets" />
-<published>2024-01-03T00:00:00+00:00</published>
-<updated>2024-01-03T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2024/01/03/of-rats-and-ratchets</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[This is going to be related to software engineering, pinky promise!]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2024/01/03/of-rats-and-ratchets.html"><![CDATA[
-<h1><span>Of Rats and Ratchets</span> <time class="meta" datetime="2024-01-03">Jan 3, 2024</time></h1>
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Of Rats and Ratchets</title>
+      <link
+        href="https://matklad.github.io/2024/01/03/of-rats-and-ratchets.html"
+        rel="alternate"
+        type="text/html"
+        title="Of Rats and Ratchets"
+      />
+      <published>2024-01-03T00:00:00+00:00</published>
+      <updated>2024-01-03T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2024/01/03/of-rats-and-ratchets</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[This is going to be related to software engineering, pinky promise!]]></summary>
+      <content type="html" xml:base="https://matklad.github.io/2024/01/03/of-rats-and-ratchets.html"
+        ><![CDATA[
+<h1><span>Of Rats and Ratchets</span> <time class="meta" datetime="2024-01-03"
+    >Jan 3, 2024</time
+  ></h1>
 <p><span>This is going to be related to software engineering, pinky promise!</span></p>
 <p><span>I was re-reading Doctor Zhivago by Boris Pasternak recently. It is a beautiful novel set in Russia</span>
 <span>during the revolutionary years before World War II. It focuses on the life of Yuri Zhivago, a doctor</span>
@@ -2733,19 +2810,28 @@ ideas of rust-analyzer and TigerBeetle!]]></summary>
 <p><span>Coming back to Doctor Zhivago, it is worth noting that the novel is arranged into a myriad of</span>
 <span>self-contained small chapters </span>&mdash;<span> a blessing for a modern attention-deprived world, as it creates a</span>
 <span>clear sense of progression even when you don</span>&rsquo;<span>t have enough focus to get lost in a book for hours.</span></p>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">Git Things</title>
-<link href="https://matklad.github.io/2023/12/31/git-things.html" rel="alternate" type="text/html" title="Git Things" />
-<published>2023-12-31T00:00:00+00:00</published>
-<updated>2023-12-31T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2023/12/31/git-things</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[A grab bag of less frequently talked about git adjacent points.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2023/12/31/git-things.html"><![CDATA[
-<h1><span>Git Things</span> <time class="meta" datetime="2023-12-31">Dec 31, 2023</time></h1>
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">Git Things</title>
+      <link
+        href="https://matklad.github.io/2023/12/31/git-things.html"
+        rel="alternate"
+        type="text/html"
+        title="Git Things"
+      />
+      <published>2023-12-31T00:00:00+00:00</published>
+      <updated>2023-12-31T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2023/12/31/git-things</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[A grab bag of less frequently talked about git adjacent points.]]></summary>
+      <content type="html" xml:base="https://matklad.github.io/2023/12/31/git-things.html"
+        ><![CDATA[
+<h1><span>Git Things</span> <time class="meta" datetime="2023-12-31"
+    >Dec 31, 2023</time
+  ></h1>
 <p><span>A grab bag of less frequently talked about git adjacent points.</span></p>
 <section id="Not-Rocket-Science-Rule-Applies-To-Merge-Commits">
 
@@ -2914,20 +3000,29 @@ ideas of rust-analyzer and TigerBeetle!]]></summary>
 </figure>
 <p><span>Happy new year, dear reader!</span></p>
 </section>
-]]></content>
-</entry>
-
-<entry>
-<title type="text">O(1) Build File</title>
-<link href="https://matklad.github.io/2023/12/31/O(1)-build-file.html" rel="alternate" type="text/html" title="O(1) Build File" />
-<published>2023-12-31T00:00:00+00:00</published>
-<updated>2023-12-31T00:00:00+00:00</updated>
-<id>https://matklad.github.io/2023/12/31/O(1)-build-file</id>
-<author><name>Alex Kladov</name></author>
-<summary type="html"><![CDATA[Rule of thumb: the size of build or CI configuration should be mostly independent of the project size.
+]]></content
+      >
+    </entry>
+  
+    <entry>
+      <title type="text">O(1) Build File</title>
+      <link
+        href="https://matklad.github.io/2023/12/31/O(1)-build-file.html"
+        rel="alternate"
+        type="text/html"
+        title="O(1) Build File"
+      />
+      <published>2023-12-31T00:00:00+00:00</published>
+      <updated>2023-12-31T00:00:00+00:00</updated>
+      <id>https://matklad.github.io/2023/12/31/O(1)-build-file</id>
+      <author><name>Alex Kladov</name></author>
+      <summary type="html"><![CDATA[Rule of thumb: the size of build or CI configuration should be mostly independent of the project size.
 In other words, adding, say, a new test should not require adding a new line to the build file to build the test, and a new line to .yml to run it on CI.]]></summary>
-<content type="html" xml:base="https://matklad.github.io/2023/12/31/O(1)-build-file.html"><![CDATA[
-<h1><span>O(1) Build File</span> <time class="meta" datetime="2023-12-31">Dec 31, 2023</time></h1>
+      <content type="html" xml:base="https://matklad.github.io/2023/12/31/O(1)-build-file.html"
+        ><![CDATA[
+<h1><span>O(1) Build File</span> <time class="meta" datetime="2023-12-31"
+    >Dec 31, 2023</time
+  ></h1>
 <p><span>Rule of thumb: the size of build or CI configuration should be mostly independent of the project size.</span>
 <span>In other words, adding, say, a new test should not require adding a new line to the build file to build the test, and a new line to </span><code>.yml</code><span> to run it on CI.</span></p>
 <p><span>Lines in CI config are costly </span>&mdash;<span> each line is typically a new entry point,</span>
@@ -2982,7 +3077,8 @@ In other words, adding, say, a new test should not require adding a new line to 
 <span>In contrast, </span>&ldquo;<span>don</span>&rsquo;<span>t change .yml</span>&rdquo;<span> is simple and mechanical, and it reliably triggers the cluster of ideas about entry points.</span>
 </li>
 </ul>
-]]></content>
-</entry>
-
-</feed>
+]]></content
+      >
+    </entry>
+  
+    </feed> 

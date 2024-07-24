@@ -1,83 +1,137 @@
 
-<!DOCTYPE html>
-<html lang='en-US'>
-<head>
-  <meta charset='utf-8'>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>matklad</title>
-  <meta name="description" content="Yet another programming blog by Alex Kladov aka matklad.">
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://matklad.github.io/resume">
-  <link rel="alternate" type="application/rss+xml" title="matklad" href="https://matklad.github.io/feed.xml">
-  <style>
-  @font-face {
-    font-family: 'Open Sans'; src: url('/css/OpenSans-300-Normal.woff2') format('woff2');
-    font-weight: 300; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'JetBrains Mono'; src: url('/css/JetBrainsMono-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Normal.woff2') format('woff2');
-    font-weight: 400; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-400-Italic.woff2') format('woff2');
-    font-weight: 400; font-style: italic;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Normal.woff2') format('woff2');
-    font-weight: 700; font-style: normal;
-  }
-  @font-face {
-    font-family: 'EB Garamond'; src: url('/css/EBGaramond-700-Italic.woff2') format('woff2');
-    font-weight: 700; font-style: italic;
-  }
+    <!DOCTYPE html>
+    <html lang="en-US">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>matklad</title>
+        <meta name="description" content="Yet another programming blog by Alex Kladov aka matklad." />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://matklad.github.io/resume" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="matklad"
+          href="https://matklad.github.io/feed.xml"
+        />
+        <style>
+          @font-face {
+            font-family: "Open Sans";
+            src: url("/css/OpenSans-300-Normal.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "JetBrains Mono";
+            src: url("/css/JetBrainsMono-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Normal.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-400-Italic.woff2") format("woff2");
+            font-weight: 400;
+            font-style: italic;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Normal.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "EB Garamond";
+            src: url("/css/EBGaramond-700-Italic.woff2") format("woff2");
+            font-weight: 700;
+            font-style: italic;
+          }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; margin-block-start: 0; margin-block-end: 0; }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
 
-  body {
-    max-width: 80ch;
-    padding: 2ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
+          body {
+            max-width: 80ch;
+            padding: 2ch;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-  header { margin-bottom: 2rem; }
-  header > nav { display: flex; column-gap: 2ch; align-items: baseline; flex-wrap: wrap; }
-  header a { font-style: normal; color: rgba(0, 0, 0, .8); text-decoration: none; }
-  header a:hover { color: rgba(0, 0, 0, .8); text-decoration: underline; }
-  header .title { font-size: 1.25em; flex-grow: 2; }
+          header {
+            margin-bottom: 2rem;
+          }
+          header > nav {
+            display: flex;
+            column-gap: 2ch;
+            align-items: baseline;
+            flex-wrap: wrap;
+          }
+          header a {
+            font-style: normal;
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+          }
+          header a:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: underline;
+          }
+          header .title {
+            font-size: 1.25em;
+            flex-grow: 2;
+          }
 
-  footer { margin-top: 2rem; }
-  footer > p { display: flex; column-gap: 2ch; justify-content: center; flex-wrap: wrap; }
-  footer a { color: rgba(0, 0, 0, .8); text-decoration: none; white-space: nowrap; }
-  footer i { vertical-align: middle; color: rgba(0, 0, 0, .8) }
+          footer {
+            margin-top: 2rem;
+          }
+          footer > p {
+            display: flex;
+            column-gap: 2ch;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          footer a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            white-space: nowrap;
+          }
+          footer i {
+            vertical-align: middle;
+            color: rgba(0, 0, 0, 0.8);
+          }
+        </style>
 
-  </style>
+        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/resume.css" />
+      </head>
 
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/resume.css">
-</head>
+      <body>
+        <header>
+          <nav>
+            <a class="title" href="/">matklad</a>
+            <a href="/about.html">About</a>
+            <a href="/links.html">Links</a>
+            <a href="/blogroll.html">Blogroll</a>
+          </nav>
+        </header>
 
-<body>
-  <header>
-    <nav>
-      <a class="title" href="/">matklad</a>
-      <a href="/about.html">About</a>
-      <a href="/links.html">Links</a>
-      <a href="/blogroll.html">Blogroll</a>
-    </nav>
-  </header>
-
-  <main>
-  
+        <main>
 <h1><span>Resume</span> </h1>
 <p><span>Welcome to my resume!</span>
 <span>It consists of two parts.</span>
@@ -136,10 +190,7 @@
 <span>Building complex systems software from nothing</span>
 </li>
 <li>
-<span>Growing open source communities</span>
-</li>
-<li>
-<span>Implementing compilers, IDEs, build tools, databases</span>
+<span>Implementing algorithms, backend APIs, and ML solutions for client problems</span>
 </li>
 <li>
 <span>Python mastery, general proficiency in C family of languages, JavaScript, Java</span>
@@ -153,12 +204,8 @@
     </h2>
 <ul>
 <li>
-<p><span>2014-2016, Masters of Software Engineering (unfinished)</span><br>
-<strong><span>St. Petersburg State University of RAS</span></strong><span>, Russia</span></p>
-</li>
-<li>
-<p><span>2009-2014, Specialist of Software Engineering</span><br>
-<strong><span>St. Petersburg State University</span></strong><span>, Russia</span></p>
+<span>2021-2026 (expected), Bachelors of Applied Science, Mechatronics Engineering, Honours</span><br>
+<strong><span>University of Waterloo</span></strong><span>, Canada</span>
 </li>
 </ul>
 </section>
@@ -167,135 +214,33 @@
     <h2>
     <a href="#Professional-Experience"><span>Professional Experience</span> </a>
     </h2>
-<section id="TigerBeetle">
-
-    <h3>
-    <a href="#TigerBeetle"><span>TigerBeetle</span> </a>
-    </h3>
-<p><code>From Dec 2022</code><br>
-<span>&lt;tigerbeetle.com&gt;</span><br>
-<a href="https://github.com/tigerbeetle/tigerbeetle" class="url">https://github.com/tigerbeetle/tigerbeetle</a></p>
-<p><span>At TigerBeetle I help to build correct and fast distributed database for accounting in Zig. I work</span>
-<span>throughout the stack, but my primary focus areas are consensus, testing, overall</span>
-<span>build&amp;development process, and knowledge sharing.</span></p>
+<p><span>todo (see resume for now :) )</span></p>
 </section>
-<section id="Rust-Programming-Language">
+</main>
 
-    <h3>
-    <a href="#Rust-Programming-Language"><span>Rust Programming Language</span> </a>
-    </h3>
-<p><code>Sep 2015 to Dec 2022</code><br>
-<a href="https://www.rust-lang.org/governance/teams/dev-tools" class="url">https://www.rust-lang.org/governance/teams/dev-tools</a></p>
-<p><span>I was a member of the dev-tools team of the Rust programming language. I am the</span>
-<span>original author of both </span><a href="https://github.com/intellij-rust/intellij-rust"><span>IntelliJ</span>
-<span>Rust</span></a><span> and </span><a href="https://github.com/rust-lang/rust-analyzer"><span>rust-analyzer</span></a><span> </span>&mdash;<span> the two</span>
-<span>tools which today power IDE support for Rust in virtually every editor. My work</span>
-<span>included both the technical task of writing an advanced, incremental, resilient</span>
-<span>compilers </span><em><span>and</span></em><span> organizing a vibrant community of contributors and maintainers</span>
-<span>to ensure that my direct involvement is not a requirement.</span></p>
-<p><span>I made many smaller contributions across the Rust ecosystem. I was a</span>
-<span>co-maintainer of </span><a href="https://github.com/rust-lang/cargo"><span>Cargo</span></a><span> in 2016-2018,</span>
-<span>maintain </span><a href="https://github.com/matklad/once_cell/"><span>prominent libraries</span></a><span>, and</span>
-<span>document </span><a href="https://github.com/matklad/cargo-xtask"><span>emerging ecosystem patterns</span></a><span>.</span></p>
-</section>
-<section id="NEAR">
-
-    <h3>
-    <a href="#NEAR"><span>NEAR</span> </a>
-    </h3>
-<p><code>Feb 2021 to Dec 2022</code><br>
-<a href="https://near.org" class="url">https://near.org</a></p>
-<p><span>At NEAR, I was a TLM/TL for the contract runtime team which is responsible for</span>
-<span>secure, reliable, and fast execution of WebAssembly smart contracts.</span></p>
-</section>
-<section id="Ferrous-Systems">
-
-    <h3>
-    <a href="#Ferrous-Systems"><span>Ferrous Systems</span> </a>
-    </h3>
-<p><code>Sep 2018 to Feb 2021</code><br>
-<a href="https://ferrous-systems.com" class="url">https://ferrous-systems.com</a></p>
-<p><span>With Ferrous Systems, we brought rust-analyzer project from an MVP to a de-facto</span>
-<span>standard for the ecosystem. I also helped with teaching people to use Rust</span>
-<span>efficiently.</span></p>
-</section>
-<section id="Computer-Science-Center">
-
-    <h3>
-    <a href="#Computer-Science-Center"><span>Computer Science Center</span> </a>
-    </h3>
-<p><code>Sep 2014 to Sep 2019</code><br>
-<a href="https://compscicenter.ru/teachers/934/" class="url">https://compscicenter.ru/teachers/934/</a></p>
-<p><span>At CSC I taught two major courses:</span></p>
-<dl>
-<dt><span>Programming In Rust, </span><code>Winter-Spring 2019</code><span>, </span><a href="https://www.youtube.com/watch?v=Oy_VYovfWyo"><span>video</span></a></dt>
-<dd>
-<p><span>A semester long introduction course, focused on contrasting unique Rust</span>
-<span>features with more mainstream languages like C++ or Java.</span></p>
-</dd>
-<dt><span>Programming In Python, </span><code>Autumn-Winter 2018</code><span>, </span><a href="https://www.youtube.com/watch?v=-py9GXvJk6A"><span>video</span></a></dt>
-<dd>
-<p><span>A semester long advanced course focusing on the language inner workings and</span>
-<span>programming idioms.</span></p>
-</dd>
-</dl>
-<p><span>I have also worked as a teaching assistant for </span>&ldquo;<span>Algorithms and Data structures</span>&rdquo;
-<span>and </span>&ldquo;<span>Python</span>&rdquo;<span> courses.</span></p>
-</section>
-<section id="JetBrains">
-
-    <h3>
-    <a href="#JetBrains"><span>JetBrains</span> </a>
-    </h3>
-<p><code>Sep 2015 to Jan 2018</code><br>
-<a href="https://intellij-rust.github.io" class="url">https://intellij-rust.github.io</a></p>
-<p><span>At JetBrains, I have led the development of</span>
-<a href="http://github.com/intellij-rust/intellij-rust"><span>IntelljJ-Rust</span></a><span> plugin for the Rust</span>
-<span>programming language. The plugin is a Rust </span>&ldquo;<span>compiler</span>&rdquo;<span> written in Kotlin, with</span>
-<span>full-blown parser, name resolution and type inference algorithms, and</span>
-<span>integrations with build tools and debuggers. Besides solving the technical</span>
-<span>problems, I</span>&rsquo;<span>ve created an open source community around the plugin by mentoring</span>
-<span>issues, writing developer documentation and supporting contributors.</span></p>
-<p><span>The plugin later became the basis for the stand-alone </span><a href="https://www.jetbrains.com/rust/"><span>Rust Rover</span></a>
-<span>IDE.</span></p>
-</section>
-<section id="Stepik-org">
-
-    <h3>
-    <a href="#Stepik-org"><span>Stepik.org</span> </a>
-    </h3>
-<p><code>2012 to 2014</code><br>
-<a href="http://stepik.org/" class="url">http://stepik.org/</a></p>
-<p><span>Stepik is a e-learning platform, written in Python, focused on rich variety of</span>
-<span>practical exercises and ease of creating content. I was on the backend team of</span>
-<span>three from the start of the project. Among other things, I</span>&rsquo;<span>ve worked on</span>
-<span>exercises subsystem and student</span>&rsquo;<span>s code sandboxing, progress tracking and</span>
-<span>designed and implemented JSON API interface for the single-page frontend.</span></p>
-</section>
-</section>
-
-  </main>
-
-  <footer>
-    <p>
-      <a href="https://github.com/matklad/matklad.github.io/edit/master/content/resume.dj">
-        <svg class="icon"><use href="/assets/icons.svg#edit"/></svg>
-        Fix typo
-      </a>
-      <a href="/feed.xml">
-        <svg class="icon"><use href="/assets/icons.svg#rss"/></svg>
-        Subscribe
-      </a>
-      <a href="mailto:aleksey.kladov+blog@gmail.com">
-        <svg class="icon"><use href="/assets/icons.svg#email"/></svg>
-        Get in touch
-      </a>
-      <a href="https://github.com/matklad">
-        <svg class="icon"><use href="/assets/icons.svg#github"/></svg>
-        matklad
-      </a>
-    </p>
-  </footer>
-</body>
-
-</html>
+        <footer>
+          <p>
+            <a
+              href="https://github.com/matklad/abhibyte.github.io/edit/master/content/resume.dj"
+            >
+              <svg class="icon"><use href="/assets/icons.svg#edit" /></svg>
+              Fix typo
+            </a>
+            //
+            <a href="/feed.xml">
+              // <svg class="icon"><use href="/assets/icons.svg#rss" /></svg> //
+              Subscribe //
+            </a>
+            <a href="mailto:abhinavramesh03@gmail.com">
+              <svg class="icon"><use href="/assets/icons.svg#email" /></svg>
+              Get in touch
+            </a>
+            <a href="https://github.com/abhibyte">
+              <svg class="icon"><use href="/assets/icons.svg#github" /></svg>
+              matklad
+            </a>
+          </p>
+        </footer>
+      </body>
+    </html>
+  
