@@ -2,7 +2,7 @@
 import { Post } from "./main.ts";
 import * as blogroll from "./blogroll.ts";
 
-const site_url = "https://matklad.github.io";
+const site_url = "https://abhibyte.github.io";
 
 export const base = ({
   content,
@@ -33,7 +33,7 @@ export const base = ({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="matklad"
+          title="abhibyte"
           href="${site_url}/feed.xml"
         />
         <style>
@@ -147,7 +147,7 @@ export const base = ({
       <body>
         <header>
           <nav>
-            <a class="title" href="/">matklad</a>
+            <a class="title" href="/">abhibyte</a>
             <a href="/about.html">About</a>
             <a href="/links.html">Links</a>
             <a href="/blogroll.html">Blogroll</a>
@@ -159,7 +159,7 @@ export const base = ({
         <footer>
           <p>
             <a
-              href="https://github.com/matklad/abhibyte.github.io/edit/master${src}"
+              href="https://github.com/abhibyte/abhibyte.github.io/edit/master${src}"
             >
               <svg class="icon"><use href="/assets/icons.svg#edit" /></svg>
               Fix typo
@@ -175,7 +175,7 @@ export const base = ({
             </a>
             <a href="https://github.com/abhibyte">
               <svg class="icon"><use href="/assets/icons.svg#github" /></svg>
-              matklad
+              abhibyte
             </a>
           </p>
         </footer>
@@ -188,7 +188,7 @@ const blurb = "Yet another programming blog by Alex Kladov aka matklad.";
 export function page(name: string, content: HtmlString) {
   return base({
     path: `/${name}`,
-    title: "matklad",
+    title: "abhibyte",
     description: blurb,
     src: `/content/${name}.dj`,
     extra_css: name === "resume" ? "resume.css" : undefined,
@@ -208,7 +208,7 @@ export const post_list = (posts: Post[]): HtmlString => {
 
   return base({
     path: "",
-    title: "matklad",
+    title: "abhibyte",
     description: blurb,
     src: "/src/templates.ts",
     content: html`<ul class="post-list">
@@ -246,7 +246,7 @@ export const blogroll_list = (posts: blogroll.FeedEntry[]): HtmlString => {
 
   return base({
     path: "",
-    title: "matklad",
+    title: "abhibyte",
     description: blurb,
     src: "/src/templates.ts",
     content: html`<ul class="post-list">
@@ -285,7 +285,7 @@ export const feed = (posts: Post[]): HtmlString => {
       <link href="${site_url}" rel="alternate" type="text/html" />
       <updated>${new Date().toISOString()}</updated>
       <id>${site_url}/feed.xml</id>
-      <title type="html">matklad</title>
+      <title type="html">abhibyte</title>
       <subtitle
         >Yet another programming blog by Alex Kladov aka matklad.</subtitle
       >
