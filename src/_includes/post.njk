@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<div class="site-wrap">
+  <article>
+    <div class="post-meta">
+      <span>{{ date | dateFormat }}</span>
+      {% if tag %}<span class="tag-pill">{{ tag }}</span>{% endif %}
+      <span>{{ content | readingTime }} min read</span>
+    </div>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </article>
+</div>

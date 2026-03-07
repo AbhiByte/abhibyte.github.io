@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: Writing
+---
+<div class="site-wrap">
+  <div class="index-header">
+    <h1>// all posts</h1>
+  </div>
+
+  <ul class="post-list">
+    {% for post in collections.posts %}
+    <li>
+      <a href="{{ post.url }}">
+        <span class="date">{{ post.date | dateFormat }}</span>
+        <span class="title">{{ post.data.title }}</span>
+        {% if post.data.tag %}<span class="tag">{{ post.data.tag }}</span>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
