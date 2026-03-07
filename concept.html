@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>abhir.dev — technical writing</title>
+  <style>
+    /* ── reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── palette ── */
+    :root {
+      --bg:        #0d0d0d;
+      --surface:   #111111;
+      --border:    #2a2a2a;
+      --muted:     #555;
+      --text:      #d8d8d8;
+      --heading:   #f2f2f2;
+      --accent:    #7fff00;   /* classic terminal green */
+      --code-bg:   #161616;
+      --font-mono: "Courier New", Courier, monospace;
+      --font-body: Georgia, "Times New Roman", serif;
+    }
+
+    /* ── base ── */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── layout ── */
+    .site-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0 1.25rem;
+    }
+    header .site-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+    }
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--muted); }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    nav a { color: var(--muted); }
+    nav a:hover { color: var(--heading); text-decoration: none; }
+
+    /* ── index ── */
+    .index-header {
+      padding: 3rem 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .index-header h1 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    .post-list { list-style: none; }
+    .post-list li {
+      border-bottom: 1px solid var(--border);
+    }
+    .post-list li a {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      color: var(--heading);
+      transition: color 0.1s;
+    }
+    .post-list li a:hover { color: var(--accent); text-decoration: none; }
+    .post-list .date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .post-list .title { font-size: 0.95rem; }
+    .post-list .tag {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.1em 0.5em;
+      white-space: nowrap;
+    }
+
+    /* ── article ── */
+    article { padding: 3rem 0 5rem; }
+
+    .post-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .post-meta .tag-pill {
+      border: 1px solid var(--border);
+      padding: 0.15em 0.6em;
+      color: var(--muted);
+    }
+
+    /* prose */
+    .prose h1 {
+      font-family: var(--font-body);
+      font-size: 1.9rem;
+      color: var(--heading);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .prose h2 {
+      font-size: 1.2rem;
+      color: var(--heading);
+      margin: 2.5rem 0 0.75rem;
+      font-weight: 600;
+    }
+    .prose h3 {
+      font-size: 1rem;
+      color: var(--heading);
+      margin: 2rem 0 0.5rem;
+      font-weight: 600;
+    }
+    .prose p { margin-bottom: 1.25rem; }
+
+    .prose code {
+      font-family: var(--font-mono);
+      font-size: 0.82em;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 0.1em 0.35em;
+      color: var(--accent);
+      border-radius: 2px;
+    }
+    .prose pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .prose pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--text);
+    }
+    .prose blockquote {
+      border-left: 3px solid var(--border);
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 1.5rem 0;
+    }
+    .prose ul, .prose ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .prose img {
+      max-width: 100%;
+      display: block;
+      margin: 2rem auto;
+      border: 1px solid var(--border);
+    }
+    .prose figcaption {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: -1.25rem;
+      margin-bottom: 2rem;
+    }
+    .prose table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .prose th, .prose td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .prose th {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* ── footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    footer .site-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── demo toggle ── */
+    .demo-nav {
+      position: fixed;
+      top: 1rem; right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+    .demo-btn {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.35em 0.8em;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .demo-btn.active { border-color: var(--accent); color: var(--accent); }
+    .demo-btn:hover { color: var(--heading); }
+
+    #view-post { display: none; }
+    #view-index.hidden { display: none; }
+    #view-post.visible { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- demo switcher -->
+<div class="demo-nav">
+  <button class="demo-btn active" onclick="show('index')">index view</button>
+  <button class="demo-btn"        onclick="show('post')">post view</button>
+</div>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="site-wrap">
+    <div class="logo">abhir<span>.dev</span></div>
+    <nav>
+      <a href="#">writing</a>
+      <a href="#">about</a>
+      <a href="#">rss</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════ INDEX VIEW ══════════════ -->
+<div id="view-index">
+  <div class="site-wrap">
+    <div class="index-header">
+      <h1>// all posts</h1>
+    </div>
+
+    <ul class="post-list">
+      <li>
+        <a href="#" onclick="show('post'); return false;">
+          <span class="date">2026-03-01</span>
+          <span class="title">Writing a lock-free ring buffer in Rust</span>
+          <span class="tag">systems</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="date">2026-02-14</span>
+          <span class="title">Parsing expression grammars from scratch</span>
+          <span class="tag">compilers</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="date">2026-01-30</span>
+          <span class="title">Why I stopped using ORMs</span>
+          <span class="tag">databases</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="date">2025-12-20</span>
+          <span class="title">Understanding memory ordering on x86 and ARM</span>
+          <span class="tag">systems</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="date">2025-11-08</span>
+          <span class="title">A practical guide to B-trees</span>
+          <span class="tag">algorithms</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="date">2025-10-03</span>
+          <span class="title">Async runtimes: tokio vs async-std internals</span>
+          <span class="tag">rust</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ POST VIEW ══════════════ -->
+<div id="view-post">
+  <div class="site-wrap">
+    <article>
+      <div class="post-meta">
+        <span>2026-03-01</span>
+        <span class="tag-pill">systems</span>
+        <span>8 min read</span>
+      </div>
+
+      <div class="prose">
+        <h1>Writing a lock-free ring buffer in Rust</h1>
+
+        <p>
+          Lock-free data structures are one of those topics that look straightforward
+          on the surface — just use atomics, right? — but hide a swamp of subtle
+          ordering hazards underneath. This post walks through building a single-producer,
+          single-consumer ring buffer in Rust with no mutexes in sight.
+        </p>
+
+        <h2>Why bother?</h2>
+        <p>
+          A mutex-protected queue is fine 99% of the time. But when a thread
+          writes sensor data at 100 kHz and another thread drains it, you really
+          don't want lock contention. Lock-free SPSC queues are the classic answer.
+        </p>
+
+        <blockquote>
+          "Premature optimisation is the root of all evil" — but sometimes you
+          genuinely need the performance.
+        </blockquote>
+
+        <h2>The structure</h2>
+        <p>
+          A ring buffer is a fixed-size array with two indices: <code>head</code>
+          (where the producer writes) and <code>tail</code> (where the consumer reads).
+          The trick is ensuring both threads see consistent values without a lock.
+        </p>
+
+        <pre><code>use std::sync::atomic::{AtomicUsize, Ordering};
+use std::cell::UnsafeCell;
+
+pub struct RingBuffer&lt;T, const N: usize&gt; {
+    buf:  [UnsafeCell&lt;T&gt;; N],
+    head: AtomicUsize,
+    tail: AtomicUsize,
+}</code></pre>
+
+        <h2>Memory ordering</h2>
+        <p>
+          This is where most tutorials wave their hands. Here's the concrete reasoning:
+        </p>
+
+        <ul>
+          <li>The producer writes data <em>before</em> it increments <code>head</code>.</li>
+          <li>The consumer reads <code>head</code> <em>before</em> it reads data.</li>
+          <li>So <code>head</code> store needs <code>Release</code>; the load needs <code>Acquire</code>.</li>
+        </ul>
+
+        <pre><code>// producer
+unsafe { *self.buf[slot].get() = value; }
+self.head.store(next, Ordering::Release);
+
+// consumer
+let head = self.head.load(Ordering::Acquire);
+if head == tail { return None; }
+let value = unsafe { self.buf[tail].get().read() };
+self.tail.store(next_tail, Ordering::Release);</code></pre>
+
+        <figure>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Circular_buffer.svg/500px-Circular_buffer.svg.png"
+            alt="Diagram of a circular buffer showing head and tail pointers"
+          />
+          <figcaption>Fig 1. — Circular buffer: head chases tail around the ring.</figcaption>
+        </figure>
+
+        <h2>Benchmarks</h2>
+
+        <table>
+          <thead>
+            <tr><th>implementation</th><th>throughput (M ops/s)</th><th>latency p99</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>Mutex&lt;VecDeque&gt;</code></td><td>42</td><td>1.8 µs</td></tr>
+            <tr><td>crossbeam channel</td><td>180</td><td>0.4 µs</td></tr>
+            <tr><td>this SPSC buffer</td><td>310</td><td>0.2 µs</td></tr>
+          </tbody>
+        </table>
+
+        <hr />
+
+        <p>
+          Full source is on <a href="#">GitHub</a>. Next up: extending this to
+          multiple producers with a fetch-and-add index scheme.
+        </p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="site-wrap">
+    <span>abhir.dev</span>
+    <span><a href="#">rss</a> &nbsp;·&nbsp; <a href="#">github</a></span>
+  </div>
+</footer>
+
+<script>
+  function show(view) {
+    const idx  = document.getElementById('view-index');
+    const post = document.getElementById('view-post');
+    const btns = document.querySelectorAll('.demo-btn');
+    if (view === 'index') {
+      idx.classList.remove('hidden');
+      post.classList.remove('visible');
+      btns[0].classList.add('active');
+      btns[1].classList.remove('active');
+    } else {
+      idx.classList.add('hidden');
+      post.classList.add('visible');
+      btns[1].classList.add('active');
+      btns[0].classList.remove('active');
+    }
+  }
+</script>
+</body>
+</html>
