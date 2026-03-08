@@ -6,7 +6,7 @@ tag: artificial-intelligence
 
 # Overview
 
-Neural networks get their name from neurons, cells in our brain that learn patterns by forming connections with other neurons via (synaptogenesis)[https://en.wikipedia.org/wiki/Synaptogenesis].
+Neural networks get their name from neurons, cells in our brain that learn patterns by forming connections with other neurons via [synaptogenesis](https://en.wikipedia.org/wiki/Synaptogenesis).
 
 Modern AI systems have taken inspiration from this with artificial neural networks. But what happens if we try to 'train' biological neurons much the way we train artificial ones?
 
