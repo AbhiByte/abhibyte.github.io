@@ -1,7 +1,7 @@
 ---
-title: Doom in a Dish: How Brain Cells Mastered a Classic Shooter
+title: "Doom in a Dish: How Brain Cells Mastered a Classic Shooter"
 date: 2026-03-07
-tag: AI/ML
+tag: artificial-intelligence
 ---
 
 # Overview
