@@ -9,10 +9,11 @@ I'm a software engineer interested in robotics, systems programming, and aerospa
 
 ## What you'll find here
 
-Posts tend to be technical and hands-on: code and math heavy walkthroughs, analysis of tradeoffs, and occasionally opinions on tools and design.
+Posts tend to be technical and hands-on: code and math heavy walkthroughs, analysis of tradeoffs, and occasionally opinions on tools and design. For non-technical writing, you can check out my Substack.
 
 ## Elsewhere
 
 - GitHub: [github.com/abhibyte](https://github.com/abhibyte)
 - Email: [abhinavramesh03@gmail.com](mailto:abhinavramesh03@gmail.com)
 - LinkedIn: [/in/abhinavramesh/](https://www.linkedin.com/in/abhinavramesh/)
+- Substack: [@anonabhi](https://substack.com/@anonabhi)
