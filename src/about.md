@@ -5,11 +5,15 @@ title: About
 
 # About
 
-I'm a software engineer interested in robotics, systems programming, and aerospace. I write here to think in public — mostly about things I've built, broken, or find interesting.
+I'm a software engineer interested in infrastructure and inference.
 
-## What you'll find here
+## What I do currently
+I'm a software engineer at 8090, a Series A startup founded by Chamath Palihapitiya. I'm currently working on infrastructure supporting sandboxed agentic testing capabilities on Software Factory.
 
-Posts tend to be technical and hands-on: code and math heavy walkthroughs, analysis of tradeoffs, and occasionally opinions on tools and design. For non-technical writing, you can check out my Substack.
+## What you can find here
+Tech-focused writing. I aim to write about an article every few weeks on something I'm working on or find interesting.
+
+You can check out my substack for non-tech writing.
 
 ## Elsewhere
 
